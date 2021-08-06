@@ -1,0 +1,46 @@
+.all-meals{
+
+    .date-picker{
+        text-align: center;
+        margin: 2rem 0;
+        input{
+            height: 30px;
+        }
+    }
+
+    .meals{
+        @include breakpoint-up(medium) {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .meal{
+            background-color: #f2f2f2;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            @include breakpoint-up(medium) {
+                margin: 2rem 2rem;
+                min-width: 35rem;
+            }
+            &--name{
+                font-style: 16px;
+                text-transform: uppercase;
+                letter-spacing: 1.2px;
+                font-weight: 700;
+            }
+            &--description{
+                font-weight: 400;
+                text-transform: uppercase;
+            }
+            &--type{
+                font-weight: 400;
+                text-transform: uppercase;
+            }
+            &--calories{
+                font-style: 20px;
+                font-weight: 700;
+            }
+        }
+    }
+}

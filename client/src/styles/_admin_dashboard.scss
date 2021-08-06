@@ -1,0 +1,49 @@
+.admin-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include breakpoint-up(medium) {
+        flex-direction: row;
+    }
+}
+
+.user-card{
+    padding: 2rem 2rem;
+    margin: 1rem 0;
+    background-color: #f2f2f2;
+    min-width: 28.5rem;
+    max-width: 50rem;
+    border-radius: 10px;
+    @include breakpoint-up(medium) {
+        margin: 1rem 2rem;
+    }
+
+    .name, .email, .calories{
+        font-size: 1.6rem;
+        span{
+            letter-spacing: 1.3;
+            color: red;
+        }
+    }
+
+    .user-btns{
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        @include breakpoint-up(medium) {
+            flex-direction: row;
+        }
+        button{
+            margin-bottom: 1rem;
+            border-radius:5px;
+            border:none;
+            @include breakpoint-up(medium) {
+                margin-bottom: 0;
+                margin-right: .5rem;
+            }
+            
+        }
+    }
+}

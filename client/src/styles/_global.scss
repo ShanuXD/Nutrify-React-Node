@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap');
+html{
+    font-size: 62.5%;
+    font-family: 'Nunito', sans-serif;
+}
+
+*,*::after, *::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    box-sizing: inherit;
+    font-size: 1.6rem;
+    
+}
+ul, li{
+    list-style: none;
+
+}
+a, a:link, a:hover, a:active{
+    text-decoration: none;
+    color: black;
+}
+
+.app-container{
+    margin: 0 2rem;
+    @include breakpoint-up(medium) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+    
+
+.container{
+    padding: 0 2rem;
+    @include breakpoint-up(medium) {
+        padding: 0 4rem;
+    }
+}
+
+
+
+.btn{
+    text-align: center;
+    margin-right: 1rem;
+    padding: .5rem 2rem;
+    max-width: 150px;
+    border-radius: 5px;
+    background-color: #2196F3;
+    color: #fFF;
+}
+
+.btn-cancel{
+    padding: .5rem 2rem;
+    max-width: 150px;
+    border-radius: 5px;
+    background: #FF2626;
+    color: #fFF;
+}
+.btn-update{
+    max-width: 150px;
+    border-radius: 5px;
+    background-color: #FF7600;
+    color: #fFF;
+}
+
+.error-message{
+    color: #FF2626;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+.green-text{
+    color: rgb(59, 184, 59);
+}
+.red-text{
+    color: #FF2626;
+}
+
+.btns{
+    margin-top: 2rem;
+    
+}
+
+
+
+
+// Loader
+section.wrapper{
+	display:flex;
+	height:70vh;
+}
+
+div.flex{
+	display:flex;	
+	flex-direction:row;
+	flex-wrap:wrap;
+	align-items:center;
+	margin:0 auto;
+}
+
+.flex > span{
+	width:20px;
+	height:20px;
+	border-radius:50%;
+	margin:10px 10px;
+	background-color:#242424;
+	animation: bounce 5s ease-in-out infinite;
+}
+
+@keyframes bounce{
+0%,
+50%,
+100%{
+	transform:scaleY(1);
+	border-radius:50%;
+	}
+25%,
+75%{
+	transform:translateY(-100px) rotateY(360deg) scaleX(.66) scaleY(1.25);
+	border-radius:50%;
+	}
+15%,
+40%,
+65%,
+90%{
+	transform: translateY(10px) scaleX(1.25) scaleY(.5);
+	border-bottom-left-radius:25%;
+	border-bottom-right-radius:25%;
+	}
+}
+
+.flex > span.circle-2{
+	animation-delay: .2s;
+}
+.flex > span.circle-3{
+	animation-delay: .4s;
+}
+.flex > span.circle-4{
+	animation-delay: .6s;
+}
+.flex > span.circle-5{
+	animation-delay: .8s;
+}
