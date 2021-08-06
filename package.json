@@ -4,12 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "client-install": "npm install --prefix client",
-    "client": "npm start --prefix client",
     "start": "node ./dist/server.js",
     "dev": "nodemon ./src/server.ts",
-    "build": "tsc -p .",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "js-build": "tsc -p .",
+    "build": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -31,5 +29,8 @@
     "nodemon": "^2.0.12",
     "ts-node": "^10.1.0",
     "typescript": "^4.3.5"
+  },
+  "engines": {
+    "node": "14.17.0"
   }
 }
