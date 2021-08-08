@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import HomeNavbar from "../components/HomeNavbar";
 
-const Signin = ({ changeUser, changeAuth }) => {
+const Signin = () => {
   let history = useHistory();
   const [error, setError] = useState("");
   const signinUser = async (email, password) => {
@@ -16,15 +17,9 @@ const Signin = ({ changeUser, changeAuth }) => {
       const token = data.token;
       document.cookie = `token=${token}`;
       setError("");
-      changeUser("user");
-      changeAuth(true);
-      localStorage.setItem("user-token", token);
       history.push("/dashboard");
     } else {
       setError(data.error);
-      if (data.auth === false) {
-        changeAuth(false);
-      }
     }
   };
 
@@ -35,42 +30,43 @@ const Signin = ({ changeUser, changeAuth }) => {
     event.target.elements.email.value = "";
     event.target.elements.password.value = "";
     signinUser(email, password);
-
-
   };
 
   return (
-    <div className="app-container">
-      <div className="form-feild">
-        <h2>Welcome Back!</h2>
-        <div className="error-message">
-          <span>{error !== "" ? error : null}</span>
+    <>
+    <HomeNavbar />
+      <div className="app-container">
+        <div className="form-feild">
+          <h2>Welcome Back!</h2>
+          <div className="error-message">
+            <span>{error !== "" ? error : null}</span>
+          </div>
+          <form onSubmit={handelSignIn}>
+            <input
+              required
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Enter Your Email"
+            />
+            <br />
+            <input
+              required
+              type="text"
+              name="pssword"
+              id="password"
+              placeholder="Enter Your Password"
+            />
+            <br />
+            <button>LogIn</button>
+          </form>
         </div>
-        <form onSubmit={handelSignIn}>
-          <input
-            required
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Enter Your Email"
-          />
-          <br />
-          <input
-            required
-            type="text"
-            name="pssword"
-            id="password"
-            placeholder="Enter Your Password"
-          />
-          <br />
-          <button>LogIn</button>
-        </form>
+        <div className="test">
+          <div className="name">Email: test@gmail.com</div>
+          <div className="password">Password: 12345</div>
+        </div>
       </div>
-      <div className="test">
-        <div className="name">Email: test@gmail.com</div>
-        <div className="password">Password: 12345</div>
-      </div>
-    </div>
+    </>
   );
 };
 

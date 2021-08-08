@@ -1,16 +1,16 @@
 import axios from "axios";
 import React, { useState, useRef } from "react";
-import { useHistory } from "react-router-dom";
-
 import { getCurrentDate } from "../utils/utils";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useHistory } from "react-router-dom";
+import UserNavbar from "../components/UserNavbar"
 
 const applicationId = "497e4eee";
 const applicationKey = "793cdb3728df0b6b274b824a06bd0c72";
 const EndPoint = "https://trackapi.nutritionix.com/v2/natural/nutrients";
 
-const AddMeal = ({ changAuth }) => {
+const AddMeal = () => {
   const history = useHistory();
   const [startDate, setStartDate] = useState(new Date());
   const [totalCalories, setTotalCalories] = useState(0);
@@ -38,7 +38,7 @@ const AddMeal = ({ changAuth }) => {
     if (response.data.success) {
       history.push("/dashboard");
     } else {
-      changAuth(false);
+      history.push("/");
     }
   };
 
@@ -62,58 +62,61 @@ const AddMeal = ({ changAuth }) => {
   };
 
   return (
-    <div className="app-container">
-      <div className="form-feild">
-        <h2>Add Meals</h2>
-        {fetchError && (
-          <h5>
-            Please provide the name of the food then press calulate calories!
-          </h5>
-        )}
-        <form onSubmit={addMeal}>
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-          />
-          <input
-            ref={nameRef}
-            type="text"
-            id="food-name"
-            name="name"
-            required
-            placeholder="Food Name"
-          />
-          <input
-            type="text"
-            id="description"
-            name="description"
-            required
-            placeholder="Food Description"
-          />
-          <input
-            type="text"
-            name="type"
-            required
-            placeholder="Food Type Ex- Meat, Eggs"
-          />
-          <input
-            type="number"
-            ref={caloriesRef}
-            id="calories"
-            name="calories"
-            step="any"
-            required
-            value={totalCalories}
-            onChange={(e) => setTotalCalories(e.target.value)}
-          />
-          <div className="btn" onClick={getCalories}>
-            Get Calories
-          </div>
-          <br />
-          <button>Add Meal</button>
-        </form>
+    <>
+      <UserNavbar />
+      <div className="app-container">
+        <div className="form-feild">
+          <h2>Add Meals</h2>
+          {fetchError && (
+            <h5>
+              Please provide the name of the food then press calulate calories!
+            </h5>
+          )}
+          <form onSubmit={addMeal}>
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+            />
+            <input
+              ref={nameRef}
+              type="text"
+              id="food-name"
+              name="name"
+              required
+              placeholder="Food Name"
+            />
+            <input
+              type="text"
+              id="description"
+              name="description"
+              required
+              placeholder="Food Description"
+            />
+            <input
+              type="text"
+              name="type"
+              required
+              placeholder="Food Type Ex- Meat, Eggs"
+            />
+            <input
+              type="number"
+              ref={caloriesRef}
+              id="calories"
+              name="calories"
+              step="any"
+              required
+              value={totalCalories}
+              onChange={(e) => setTotalCalories(e.target.value)}
+            />
+            <div className="btn" onClick={getCalories}>
+              Get Calories
+            </div>
+            <br />
+            <button>Add Meal</button>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

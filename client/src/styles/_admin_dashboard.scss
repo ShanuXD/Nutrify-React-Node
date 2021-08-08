@@ -5,6 +5,7 @@
     align-items: center;
     @include breakpoint-up(medium) {
         flex-direction: row;
+        flex-wrap: wrap;
     }
 }
 
@@ -23,7 +24,7 @@
         font-size: 1.6rem;
         span{
             letter-spacing: 1.3;
-            color: red;
+            color: #0f52ba;
         }
     }
 

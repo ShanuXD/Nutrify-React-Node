@@ -3,6 +3,7 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { getCurrentDate } from "../utils/utils";
+import AdminNavbar from "../components/AdminNavbar";
 
 const ShowAllMeals = (props) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -51,7 +52,9 @@ const ShowAllMeals = (props) => {
   }
 
   return (
-    <div className="container all-meals">
+    <>
+      <AdminNavbar />
+      <div className="container all-meals">
       <div className="date-picker">
         <DatePicker
           selected={startDate}
@@ -81,6 +84,7 @@ const ShowAllMeals = (props) => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

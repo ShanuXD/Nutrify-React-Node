@@ -32,20 +32,15 @@ dotenv_1.default.config();
 const app = express_1.default();
 const URL = process.env.DATABASE_URL;
 const LocalDB = "mongodb://localhost:27017/NutrifyApp";
-setupDB_1.connectToDataBase(LocalDB);
-app.use(cors_1.default({
-    origin: "http://localhost:3000/"
-}));
+setupDB_1.connectToDataBase(URL);
+app.use(cors_1.default());
 app.use(express_1.urlencoded({ extended: true }));
 app.use(express_1.json());
 // Use Routes
 app.use(index_1.default);
 // Use Static Assets If In Production
-if (process.env.NODE_ENV === 'production') {
-    // Set static folder
-    app.use(express_1.default.static('client/build'));
-    app.get('*', (req, res) => {
-        res.sendFile(path_1.default.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-}
+app.use(express_1.default.static('client/build'));
+app.get('*', (req, res) => {
+    res.sendFile(path_1.default.resolve(__dirname, 'client/build', 'index.html'));
+});
 app.listen(process.env.PORT || 5000, () => console.log("server is running!"));

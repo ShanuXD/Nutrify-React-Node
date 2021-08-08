@@ -2,14 +2,17 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Loading from "../components/Loading";
 import User from "../components/User";
+import { useHistory } from "react-router-dom";
+import AdminNavbar from "../components/AdminNavbar"
 
 // Alert the user when delting is done
 
-const AdminDashboard = ({changeAuth}) => {
+const AdminDashboard = () => {
   const [allUsers, setAllUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [alertMessage, setAlertMessage] = useState("");
   const [error, setError] = useState("")
+  let history = useHistory();
 
   const updateUsers = (newUsers) => {
     setAllUsers(newUsers);
@@ -29,15 +32,9 @@ const AdminDashboard = ({changeAuth}) => {
       setAllUsers(users.length > 0 ? users : []);
     }else{
       setError(response.data.error)
-      if(response.data.auth === false){
-        changeAuth(false)
-        // localStorage.setItem("admin-token", '');
-      }
+      history.push("/admin");
     }
-
-
     setIsLoading(false);
-    // localStorage.setItem("admin-token", '');
   };
 
   useEffect(() => {
@@ -54,6 +51,8 @@ const AdminDashboard = ({changeAuth}) => {
   }
 
   return (
+    <>
+    <AdminNavbar />
     <div className="container ">
       {alertMessage !== "" && (
         <div className="alert-message">{alertMessage}</div>
@@ -76,6 +75,8 @@ const AdminDashboard = ({changeAuth}) => {
         </div>
       )}
     </div>
+    </>
+
   );
 };
 

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {useEffect, useState, useRef} from 'react'
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
+import AdminNavbar from '../components/AdminNavbar';
 
 const EditUserByAdmin = (props) => {
 
@@ -44,6 +45,8 @@ const EditUserByAdmin = (props) => {
 
 
     return (
+        <>
+        <AdminNavbar />
         <div className="app-container">
             <form className="form-feild" onSubmit={updateUser}>
                 <input type="text" name="name"  required placeholder="Name"/>
@@ -55,6 +58,7 @@ const EditUserByAdmin = (props) => {
                 <Link className="btn-cancel" to="/admin-dashboard">Cancel</Link>
             </form>
         </div>
+        </>
     )
 }
 

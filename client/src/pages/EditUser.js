@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {useEffect, useState, useRef} from 'react'
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
+import UserNavbar from '../components/UserNavbar';
 
 const EditUser = (props) => {
 
@@ -29,6 +30,7 @@ const EditUser = (props) => {
             history.push("/dashboard")
         }else{
             setError(response.data.error)
+            history.push("/");
         }
 
     }
@@ -40,6 +42,7 @@ const EditUser = (props) => {
             setUser(response.data.user)
         }else{
             setError(response.data.error)
+            history.push("/");
         }
     }
 
@@ -54,6 +57,8 @@ const EditUser = (props) => {
 
 
     return (
+        <>
+        <UserNavbar />
         <div className="app-container">
             <form className="form-feild"
              onSubmit={editUser}>
@@ -68,6 +73,7 @@ const EditUser = (props) => {
                 <Link className="btn-cancel" to="/dashboard">Cancel</Link>
             </form>
         </div>
+        </>
     )
 }
 

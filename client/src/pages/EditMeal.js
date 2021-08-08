@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
+import UserNavbar from "../components/UserNavbar";
 
 const EditPage = (props) => {
   const history = useHistory();
@@ -70,6 +71,8 @@ const EditPage = (props) => {
   }
 
   return (
+    <>
+    <UserNavbar />
     <div className="app-container">
       <form
         className="form-feild"
@@ -131,6 +134,7 @@ const EditPage = (props) => {
         <Link to="/dashboard">Cancel</Link>
       </form>
     </div>
+    </>
   );
 };
 

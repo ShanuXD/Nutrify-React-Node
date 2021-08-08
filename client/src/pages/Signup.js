@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { clearCookies } from "../utils/utils";
+import HomeNavbar from "../components/HomeNavbar"
 
 const Signup = () => {
   const history = useHistory();
@@ -37,6 +38,8 @@ const Signup = () => {
   };
 
   return (
+    <>
+    <HomeNavbar />
     <div className="app-container">
       <div className="form-feild">
         <h2>Create A New Account!</h2>
@@ -79,6 +82,7 @@ const Signup = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

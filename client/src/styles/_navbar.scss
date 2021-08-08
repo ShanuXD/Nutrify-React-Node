@@ -1,6 +1,7 @@
 header{
     background-color: #f2f2f2;
     padding: 0 2rem;
+    position: relative;
     nav{
         display: flex;
         justify-content: space-between;
@@ -14,21 +15,91 @@ header{
 
         ul{
             
-
+            display: none;
+            @include breakpoint-up(medium){
+                display: inline-block;
+             }
+ 
             li{
                 display: inline-block;
+                position: relative;
                 margin-left: 1rem;
                 padding: 1rem;
-
-                :hover{
-                    border-bottom: 2px solid #242424;
-                }
+                
                 a{
                     font-size: 20px;
                     font-weight: 300;
+                    &::after{
+                        content: "";
+                        position: absolute;
+                        background-color: #0F52BA;
+                        width: 80%;
+                        height: 2px;
+                        top: 40px;
+                        left: 9px;
+                        opacity: 0;
+                        transition: all .5s ease-in-out;
+                    }
+                    &:hover{
+                        &::after{
+                            opacity: 1;
+                        }
+                    }
 
                 }
             }
         }
+
+        .menu{
+            z-index: 15;
+            width: 25px;
+            height: 25px;
+            @include breakpoint-up(medium){
+                display: none;
+             }
+        }
+        .hide-menubox{
+            display: none;
+        }
+
+        .overlay{
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background:#343f5675;
+            z-index: 10;
+
+            &__container{
+                height: 100%;
+                padding-top: 8rem;
+
+                .link{
+                    text-align: center;
+                    font-size: 2.2rem;
+                    font-weight: 700;
+                    display: block;
+                    padding: 3rem 0 ;
+                    background-color: #343f56ce;
+                    border-bottom: 5px solid #343f5675;
+
+                    &:hover{
+                        filter: brightness(90%);
+                    }
+
+                    &:first-child{
+                        border-top: 5px solid #343f5675;
+                    }
+
+                    a{
+                        color: #eee;
+
+                    }
+                }
+            }
+        }
+
+
     }
 }
