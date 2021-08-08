@@ -39,8 +39,16 @@ app.use(express_1.json());
 // Use Routes
 app.use(index_1.default);
 // Use Static Assets If In Production
-app.use(express_1.default.static('client/build'));
-app.get('*', (req, res) => {
-    res.sendFile(path_1.default.resolve(__dirname, 'client/build', 'index.html'));
-});
+// app.use(express.static('client/build'));
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
+// });
+// Serve static assets if in production
+if (process.env.NODE_ENV === 'production') {
+    // Set static folder
+    app.use(express_1.default.static('client/build'));
+    app.get('*', (req, res) => {
+        res.sendFile(path_1.default.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 app.listen(process.env.PORT || 5000, () => console.log("server is running!"));
