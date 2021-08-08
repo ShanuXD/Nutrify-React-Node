@@ -10,7 +10,8 @@ import EditMeal from "./pages/EditMeal";
 import EditUser from "./pages/EditUser";
 import EditUserByAdmin from "./pages/EditUserByAdmin";
 import ShowAllMeals from "./pages/ShowAllMeals";
-import "./styles/style.scss";
+import "./styles/style.css";
+// import "./styles/style.scss";
 // import Navbar from "./components/Navbar";
 // import ProtectedRoute from "./routers/ProtectedRoute";
 
